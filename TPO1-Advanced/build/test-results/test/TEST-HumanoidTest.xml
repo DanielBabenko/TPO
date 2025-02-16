@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="HumanoidTest" tests="14" skipped="0" failures="0" errors="0" timestamp="2025-02-16T12:51:56" hostname="DANIELBABENKO" time="0.038">
+  <properties/>
+  <testcase name="testWriteAnArticleComputerNotFunctional()" classname="HumanoidTest" time="0.019"/>
+  <testcase name="testSleepWithMuse()" classname="HumanoidTest" time="0.001"/>
+  <testcase name="testPublishADraft()" classname="HumanoidTest" time="0.001"/>
+  <testcase name="testPublishFinishedDraft()" classname="HumanoidTest" time="0.002"/>
+  <testcase name="testWriteAnArticleHasMuse()" classname="HumanoidTest" time="0.001"/>
+  <testcase name="testWriteAnArticleSuccessful()" classname="HumanoidTest" time="0.001"/>
+  <testcase name="testWriteAnArticleWithLowBattery()" classname="HumanoidTest" time="0.001"/>
+  <testcase name="testPutOffClothesSuccessful()" classname="HumanoidTest" time="0.001"/>
+  <testcase name="testPutOffClothesEmptyList()" classname="HumanoidTest" time="0.001"/>
+  <testcase name="testChangeDislocation()" classname="HumanoidTest" time="0.001"/>
+  <testcase name="testNegativeVolume()" classname="HumanoidTest" time="0.001"/>
+  <testcase name="testPutOnClothes()" classname="HumanoidTest" time="0.001"/>
+  <testcase name="testPublishAnArticle()" classname="HumanoidTest" time="0.001"/>
+  <testcase name="testSleepWithoutMuse()" classname="HumanoidTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
