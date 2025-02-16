@@ -1,59 +1,42 @@
 package task2;
 
-import java.util.List;
-
 public class Sorting {
-    static List<String> trace;
 
-    static void record(String point) {
-        trace.add(point);
-    }
-    private static void sortArrayByCountingMethod(int[] array) {
-        record("A");
-        if (array.length == 0){
-            record("Empty");
+    public static void sortArrayByCountingMethod(int[] array) {
+        if (array.length == 0) {
             return;
         }
 
         int k = array[0];
+        int minimum = 0;
         for (int i = 1; i < array.length; i++) {
-            record("B");
             if (array[i] > k) {
                 k = array[i];
-                record("C");
+            } else if (array[i] < minimum && array[i] < 0) {
+                minimum = array[i];
             }
         }
 
+        k -= minimum;
+
         int[] tempArray = new int[k + 1];
-        record("D");
 
         for (int value : array) {
-            tempArray[value] += 1;
-            record("E");
+            tempArray[value - minimum] += 1;
         }
-        record("F");
-
-//        for (int i = 0; i < tempArray.length; i++){
-//            System.out.print(tempArray[i]);
-//            System.out.print(" ");
-//        }
-//        System.out.println(" ");
 
         int b = 0;
-        for (int i = 0; i < tempArray.length; i++){
-            record("H");
+        for (int i = 0; i < tempArray.length; i++){;
             for (int j = 0; j < tempArray[i]; j++) {
-                record("I");
-                array[b] = i;
+                array[b] = i + minimum;
                 b += 1;
             }
         }
-        record("K");
-        record("End");
     }
 
+
     public static void main(String[] args) {
-        int[] numbers = {};
+        int[] numbers = {1, 52, 67, 34, 90, 2, 45, 52, 39, 52, -20, 0};
         for (int i = 0; i < numbers.length; i++){
             System.out.print(numbers[i]);
             System.out.print(" ");
