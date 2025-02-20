@@ -3,7 +3,6 @@ import org.junit.jupiter.api.Test;
 import task3.*;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static task1.Tangent.tangentTaylor;
 import static task3.Clothes.*;
 
 import java.util.ArrayList;
@@ -25,13 +24,13 @@ class HumanoidTest {
     @Test
     void testSleepWithMuse() {
         humanoid.setHasMuse(true);
-        assertFalse(humanoid.sleep(), "Должен вернуть false, если есть муза.");
+        assertFalse(humanoid.sleep());
     }
 
     @Test
     void testSleepWithoutMuse() {
         humanoid.setHasMuse(false);
-        assertTrue(humanoid.sleep(), "Должен вернуть true, если нет музы.");
+        assertTrue(humanoid.sleep());
     }
 
     @Test
@@ -89,7 +88,7 @@ class HumanoidTest {
             humanoid.writeAnArticle("Test Theme", computer, Genres.FANTASY, 100);
         });
 
-        assertEquals("Не сегодня.", exception.getMessage(), "Сообщение об ошибке должно соответствовать.");
+        assertEquals("Не сегодня.", exception.getMessage());
     }
 
     @Test
@@ -102,7 +101,7 @@ class HumanoidTest {
             humanoid.writeAnArticle("Test Theme", computer, Genres.FANTASY, 100);
         });
 
-        assertEquals("Не сегодня.", exception.getMessage(), "Сообщение об ошибке должно соответствовать.");
+        assertEquals("Не сегодня.", exception.getMessage());
     }
 
     @Test
@@ -128,7 +127,7 @@ class HumanoidTest {
             humanoid.publishAnArticle(article, magazine);
         });
 
-        assertEquals("Черновик нужно довести до готовой статьи, чтобы опубликовать!", exception.getMessage(), "Должна вызываться соответствующая ошибка.");
+        assertEquals("Черновик нужно довести до готовой статьи, чтобы опубликовать!", exception.getMessage());
     }
 
     @Test
@@ -137,13 +136,13 @@ class HumanoidTest {
         computer.setBatteryCharge(1);
         humanoid.setHasMuse(true);
 
-        Article draft = humanoid.writeAnArticle("Hamza Loxx", computer, Genres.MYSTERY, 7);
+        Article draft = humanoid.writeAnArticle("Hamza Petuxx", computer, Genres.MYSTERY, 7);
         Article article = humanoid.finishAnArticle((Draft) draft, 6);
         Guide magazine = new Guide("Tyoschin Yazik");
 
         humanoid.publishAnArticle(article, magazine);
 
-        assertTrue(magazine.articles.contains(article), "Журнал должен содержать опубликованную статью.");
+        assertTrue(magazine.articles.contains(article));
     }
 
     @Test
@@ -152,17 +151,17 @@ class HumanoidTest {
 
         humanoid.changeDislocation(newLocation);
 
-        assertEquals(newLocation, humanoid.getLocation(), "Местоположение должно соответствовать заданному.");
+        assertEquals(newLocation, humanoid.getLocation());
     }
 
     @Test
     void testPutOnClothes() {
         Clothes clothes = SWEATER;
 
-        humanoid.setClothes(new ArrayList<>()); // Инициализируем список clothes
+        humanoid.setClothes(new ArrayList<>());
         humanoid.putOnClothes(clothes);
 
-        assertTrue(humanoid.getClothes().contains(clothes), "Список одежды должен содержать надетую одежду.");
+        assertTrue(humanoid.getClothes().contains(clothes));
     }
 
     @Test
@@ -174,7 +173,7 @@ class HumanoidTest {
 
         humanoid.putOffClothes(clothes);
 
-        assertFalse(humanoid.getClothes().contains(clothes), "Список одежды не должен содержать снятую одежду.");
+        assertFalse(humanoid.getClothes().contains(clothes));
     }
 
     @Test
@@ -184,6 +183,6 @@ class HumanoidTest {
 
         humanoid.putOffClothes(clothes);
 
-        assertTrue(humanoid.getClothes().isEmpty(), "Список одежды должен оставаться пустым.");
+        assertTrue(humanoid.getClothes().isEmpty());
     }
 }
