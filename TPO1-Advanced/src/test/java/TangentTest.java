@@ -94,7 +94,6 @@ public class TangentTest {
         assertEquals(tan(39.52 * PI / 180), tangentTaylor(39.52, n), DELTA);
     }
 
-
     void testTangentWithVaryingN(double alpha, double delta) {
         double expected = tan(alpha * PI / 180);
         int n = 0;
