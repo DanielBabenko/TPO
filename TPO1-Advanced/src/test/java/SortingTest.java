@@ -46,14 +46,11 @@ class SortingTest {
         int[] tempArray = new int[k + 1];
 
         int ePoint = 0;
-        int fPoint = 0;
         for (int value : array) {
             ePoint++;
             tempArray[value - minimum] += 1;
-            fPoint++;
         }
         record("E"+ePoint);
-        record("F"+fPoint);
         record("G");
 
         int b = 0;
@@ -92,7 +89,7 @@ class SortingTest {
         int[] array = {5};
         trace = new ArrayList<>();
         sortArrayByCountingMethod(array);
-        List<String> expectedTrace = Arrays.asList("A", "B0", "C0", "Negative0", "D", "SHIFT0", "E1", "F1", "G", "H6", "I1", "J5", "K");
+        List<String> expectedTrace = Arrays.asList("A", "B0", "C0", "Negative0", "D", "SHIFT0", "E1", "G", "H6", "I1", "J5", "K");
         assertEquals(expectedTrace, trace);
         assertArrayEquals(new int[]{5}, array);
     }
@@ -102,7 +99,7 @@ class SortingTest {
         int[] array = {3, 1, 4, 1, 5, 9, 2, 6};
         trace = new ArrayList<>();
         sortArrayByCountingMethod(array);
-        List<String> expectedTrace = Arrays.asList("A", "B7", "C3", "Negative0", "D", "SHIFT0", "E8", "F8", "G", "H10", "I8", "J3", "K");
+        List<String> expectedTrace = Arrays.asList("A", "B7", "C3", "Negative0", "D", "SHIFT0", "E8", "G", "H10", "I8", "J3", "K");
         assertEquals(expectedTrace, trace);
         assertArrayEquals(new int[]{1, 1, 2, 3, 4, 5, 6, 9}, array);
     }
@@ -112,7 +109,7 @@ class SortingTest {
         int[] array = {52, 52, 52, 52, 52};
         trace = new ArrayList<>();
         sortArrayByCountingMethod(array);
-        List<String> expectedTrace = Arrays.asList("A", "B4", "C0", "Negative0", "D", "SHIFT0", "E5", "F5", "G", "H53", "I5", "J52","K");
+        List<String> expectedTrace = Arrays.asList("A", "B4", "C0", "Negative0", "D", "SHIFT0", "E5", "G", "H53", "I5", "J52","K");
         assertEquals(expectedTrace, trace);
         assertArrayEquals(new int[]{52, 52, 52, 52, 52}, array);
     }
@@ -122,7 +119,7 @@ class SortingTest {
         int[] array = {10, 1, 2, 3, 4};
         trace = new ArrayList<>();
         sortArrayByCountingMethod(array);
-        List<String> expectedTrace = Arrays.asList("A", "B4", "C0", "Negative0", "D", "SHIFT0", "E5", "F5", "G", "H11", "I5", "J6", "K");
+        List<String> expectedTrace = Arrays.asList("A", "B4", "C0", "Negative0", "D", "SHIFT0", "E5", "G", "H11", "I5", "J6", "K");
                 assertEquals(expectedTrace, trace);
         assertArrayEquals(new int[]{1, 2, 3, 4, 10}, array);
     }
@@ -132,7 +129,7 @@ class SortingTest {
         int[] array = {1, 2, 3, 4, 10};
         trace = new ArrayList<>();
         sortArrayByCountingMethod(array);
-        List<String> expectedTrace = Arrays.asList("A", "B4", "C4", "Negative0", "D", "SHIFT0", "E5", "F5", "G", "H11", "I5", "J6", "K");
+        List<String> expectedTrace = Arrays.asList("A", "B4", "C4", "Negative0", "D", "SHIFT0", "E5", "G", "H11", "I5", "J6", "K");
         assertEquals(expectedTrace, trace);
         assertArrayEquals(new int[]{1, 2, 3, 4, 10}, array);
     }
@@ -142,7 +139,7 @@ class SortingTest {
         int[] array = {0, 1, 2, 0, 3, 0};
         trace = new ArrayList<>();
         sortArrayByCountingMethod(array);
-        List<String> expectedTrace = Arrays.asList("A", "B5", "C3", "Negative0", "D", "SHIFT0", "E6", "F6", "G", "H4", "I6", "J0", "K");
+        List<String> expectedTrace = Arrays.asList("A", "B5", "C3", "Negative0", "D", "SHIFT0", "E6", "G", "H4", "I6", "J0", "K");
         assertEquals(expectedTrace, trace);
         assertArrayEquals(new int[]{0, 0, 0, 1, 2, 3}, array);
     }
@@ -152,7 +149,7 @@ class SortingTest {
         int[] array = {-3, -20, 19, 0, -1, 6};
         trace = new ArrayList<>();
         sortArrayByCountingMethod(array);
-        List<String> expectedTrace = Arrays.asList("A", "B5", "C1", "Negative1", "D", "SHIFT20", "E6", "F6", "G", "H40", "I6", "J34", "K");
+        List<String> expectedTrace = Arrays.asList("A", "B5", "C1", "Negative1", "D", "SHIFT20", "E6", "G", "H40", "I6", "J34", "K");
         assertEquals(expectedTrace, trace);
         assertArrayEquals(new int[]{-20, -3, -1, 0, 6, 19}, array);
     }
