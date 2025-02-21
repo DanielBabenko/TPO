@@ -16,8 +16,8 @@ class HumanoidTest {
 
     @BeforeEach
     void setUp() {
-        humanoid = new Humanoid("Форд");
         cabin = new Location("Каюта");
+        humanoid = new Humanoid("Форд", cabin);
         humanoid.setClothes(Arrays.asList(UNDERWEAR, SHOES));
     }
 
@@ -61,12 +61,26 @@ class HumanoidTest {
         assertNotNull(article, "Должен вернуть Article, если компьютер работает и есть муза.");
         assertEquals("Test Theme", article.getTopic(), "Тема статьи должна соответствовать заданной.");
         assertEquals(10, article.getVolume(), "Объем статьи должен соответствовать заданному.");
-        assertEquals(90, computer.getBatteryCharge(), "Заряд должен соответствовать затраченному.");
+        assertEquals(95, computer.getBatteryCharge(), "Заряд должен соответствовать затраченному.");
+    }
+
+    @Test
+    void testWriteAnArticleWithBigComputer() throws Exception {
+        Computer computer = new Computer(Size.BIG, cabin);
+        computer.chargeFull();
+        humanoid.setHasMuse(true);
+
+        Article article = humanoid.writeAnArticle("Test Theme", computer, Genres.TOXIC, 10);
+
+        assertNotNull(article, "Должен вернуть Article, если компьютер работает и есть муза.");
+        assertEquals("Test Theme", article.getTopic(), "Тема статьи должна соответствовать заданной.");
+        assertEquals(10, article.getVolume(), "Объем статьи должен соответствовать заданному.");
+        assertEquals(98, computer.getBatteryCharge(), "Заряд должен соответствовать затраченному.");
     }
 
     @Test
     void testWriteAnArticleWithLowBattery() throws Exception {
-        Computer computer = new Computer(Size.SMALL, cabin);
+        Computer computer = new Computer(Size.MICROSCOPIC, cabin);
         computer.setBatteryCharge(8);
         humanoid.setHasMuse(true);
 
@@ -76,6 +90,20 @@ class HumanoidTest {
         assertEquals(52, article.getTopic(), "Тема статьи должна соответствовать заданной.");
         assertEquals(8, article.getVolume(), "Объем статьи должен соответствовать заданному.");
         assertEquals(0, computer.getBatteryCharge(), "Заряд должен соответствовать затраченному.");
+    }
+
+    @Test
+    void testWriteAnArticleWithoutComputer() {
+        Location kitchen = new Location("Кухня");
+        Computer computer = new Computer(Size.SMALL, kitchen);
+        computer.chargeFull();
+        humanoid.setHasMuse(true);
+
+        Exception exception = assertThrows(Exception.class, () -> {
+            humanoid.writeAnArticle("Test Theme", computer, Genres.FANTASY, 100);
+        });
+
+        assertEquals("Не сегодня.", exception.getMessage());
     }
 
     @Test
